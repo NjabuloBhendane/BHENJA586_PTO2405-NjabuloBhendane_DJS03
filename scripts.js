@@ -4,19 +4,12 @@ let page = 1;
 let matches = books;
 
 // 1. Reusable function to render book preview
-function renderBookPreview({ id, title, author, image }) {
-  const button = document.createElement("button");
-  button.classList.add("preview");
-  button.setAttribute("data-preview", id);
+class BookPreview extends HTMLElement {
+ constructor () {
+  super();
+  this.attachShadow ({mode: 'open'}); //attach a show DOM
+ }
 
-  button.innerHTML = `
-        <img class="preview__image" src="${image}" />
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `;
-  return button;
 }
 
 // 2. Function to render list of books
